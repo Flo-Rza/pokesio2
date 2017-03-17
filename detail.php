@@ -13,7 +13,7 @@
     ?>
 </head>
 <body>
-<?php $resultat = $bdd->query('SELECT * FROM pokemon WHERE id = "'.$id.'" ;');?> /* requete sql avec l'ID du pokemon */
+<?php $resultat = $bdd->query('SELECT * FROM pokemon WHERE id = "'.$id.'" ;');/* requete sql avec l'ID du pokemon */?>
 <?php $donnees = $resultat->fetch()?>
     <h1>Details de : <?php echo $donnees['nom']; ?></h1><br>
     <form action="index.php">
@@ -27,7 +27,7 @@
 
     </tr>
     <tr>
-        <td><?php echo $donnees['nom']; ?></td>   /*affichage des donnée du pokemon*/
+        <td><?php echo $donnees['nom']; /*affichage des donnée du pokemon*/ ?></td>
         <td><?php echo $donnees['type']; ?></td>
         <td><?php echo $donnees['faiblesses']; ?></td>
     </tr>

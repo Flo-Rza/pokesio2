@@ -32,7 +32,7 @@ while($donnees = $resultat->fetch())
 
     </tr>
     <tr>
-        <td><?php echo'<a href="detail.php?id='.$donnees['id'].'">'.$donnees['nom'].'</a>'?></td> /*lien en rapport avec la recherche*/
+        <td><?php echo'<a href="detail.php?id='.$donnees['id'].'">'.$donnees['nom'].'</a>'/*lien en rapport avec la recherche*/ ?></td>
     </tr>
     </table>
 <?php
