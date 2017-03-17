@@ -8,12 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PokeSIO - Recherche</title>
     <?php
-    require_once ("function.php");
-    $id = $_GET ['id'];
+    require_once ("function.php"); /* obligation d'avoir le fichier function pour charger la page */
+    $id = $_GET ['id']; /* recuperation de la variable */
     ?>
 </head>
 <body>
-<?php $resultat = $bdd->query('SELECT * FROM pokemon WHERE id = "'.$id.'" ;');?>
+<?php $resultat = $bdd->query('SELECT * FROM pokemon WHERE id = "'.$id.'" ;');?> /* requete sql avec l'ID du pokemon */
 <?php $donnees = $resultat->fetch()?>
     <h1>Details de : <?php echo $donnees['nom']; ?></h1><br>
     <form action="index.php">
@@ -27,7 +27,7 @@
 
     </tr>
     <tr>
-        <td><?php echo $donnees['nom']; ?></td>
+        <td><?php echo $donnees['nom']; ?></td>   /*affichage des donnée du pokemon*/
         <td><?php echo $donnees['type']; ?></td>
         <td><?php echo $donnees['faiblesses']; ?></td>
     </tr>

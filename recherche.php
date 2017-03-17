@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
+    /* importation de bootstrap */
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PokeSIO - Recherche</title>
     <?php
-    require_once ("function.php");
-    $recherche = ucfirst($_GET ['recherche']);
+    require_once ("function.php"); /*requierement du fichier function */
+    $recherche = ucfirst($_GET ['recherche']); /* recuperation de la variable*/
     ?>
 </head>
 <body>
@@ -18,8 +19,7 @@
         <input type="submit" value="Accueil">
     </form>
 <?php
-$resultat = $bdd->query('SELECT * FROM pokemon WHERE nom = "'.$recherche.'" ;');
-//$resultat = mysqli_query($mysqli, 'SELECT * FROM pokemon WHERE nom = "'.$recherche.'" ');
+$resultat = $bdd->query('SELECT * FROM pokemon WHERE nom = "'.$recherche.'" ;');/* requete sql */
 ?>
 <table class="table">
     <?php
@@ -32,7 +32,7 @@ while($donnees = $resultat->fetch())
 
     </tr>
     <tr>
-        <td><?php echo'<a href="detail.php?id='.$donnees['id'].'">'.$donnees['nom'].'</a>'?></td>
+        <td><?php echo'<a href="detail.php?id='.$donnees['id'].'">'.$donnees['nom'].'</a>'?></td> /*lien en rapport avec la recherche*/
     </tr>
     </table>
 <?php
