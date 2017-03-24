@@ -15,28 +15,35 @@
 </head>
 <body>
     <h1>Vous avez recherché : <?php echo $recherche ?></h1><br>
-    <form action="index.php">
-        <input type="submit" value="Accueil">
-    </form>
 <?php
 $resultat = $bdd->query('SELECT * FROM pokemon WHERE nom = "'.$recherche.'" ;');/* requete sql */
+$resultatprep = $bdd->prepare('SELECT * FROM pokemon WHERE nom = "'.$recherche.'" ;');
+$resultatprep->execute();
+$count = $resultat->rowCount();
+if ($count <= 0){
+    echo "<h1>aucun resultat</h1>";
+}
 ?>
+
 <table class="table">
-    <?php
-while($donnees = $resultat->fetch())
+<?php
+while ($donnees = $resultat->fetch())
 {
-    ?>
+?>
 
     <tr>
         <td>Nom</td>
 
     </tr>
     <tr>
-        <td><?php echo'<a href="detail.php?id='.$donnees['id'].'">'.$donnees['nom'].'</a>'/*lien en rapport avec la recherche*/ ?></td>
+        <td><?php echo '<a href="detail.php?id=' . $donnees['id'] . '">' . $donnees['nom'] . '</a>'/*lien en rapport avec la recherche*/ ?></td>
     </tr>
-    </table>
-<?php
-}
+</table>
+    <?php
+    }
 ?>
+    <form action="index.php">
+        <input type="submit" value="Accueil">
+    </form>
 </body>
 </html>

@@ -16,9 +16,6 @@
 <?php $resultat = $bdd->query('SELECT * FROM pokemon WHERE id = "'.$id.'" ;');/* requete sql avec l'ID du pokemon */?>
 <?php $donnees = $resultat->fetch()?>
     <h1>Details de : <?php echo $donnees['nom']; ?></h1><br>
-    <form action="index.php">
-        <input type="submit" value="Accueil">
-    </form>
 <table class="table">
     <tr>
         <td>Nom</td>
@@ -32,5 +29,8 @@
         <td><?php echo $donnees['faiblesses']; ?></td>
     </tr>
 </table>
+<form action="index.php">
+    <input type="submit" value="Accueil">
+</form>
 </body>
 </html>
