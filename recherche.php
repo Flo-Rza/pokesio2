@@ -16,10 +16,9 @@
 <body>
     <h1>Vous avez recherché : <?php echo $recherche ?></h1><br>
 <?php
-$resultat = $bdd->query('SELECT * FROM pokemon WHERE nom = "'.$recherche.'" ;');/* requete sql */
-$resultatprep = $bdd->prepare('SELECT * FROM pokemon WHERE nom = "'.$recherche.'" ;');
-$resultatprep->execute();
-$count = $resultat->rowCount();
+$resultatprep = $bdd->prepare('SELECT * FROM pokemon WHERE nom = ? ;');
+$resultatprep->execute(array($recherche));
+$count = $resultatprep->rowCount();
 if ($count <= 0){
     echo "<h1>aucun resultat</h1>";
 }
@@ -27,7 +26,7 @@ if ($count <= 0){
 
 <table class="table">
 <?php
-while ($donnees = $resultat->fetch())
+while ($donnees = $resultatprep ->fetch())
 {
 ?>
 
